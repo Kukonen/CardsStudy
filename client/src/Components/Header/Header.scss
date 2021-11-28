@@ -1,0 +1,87 @@
+@import "../../Themes//index.scss";
+
+@mixin headerSection() {
+    border: 1px solid $border;
+    padding: 10px;
+    background-color: $background;
+    display: flex;
+}
+
+.Header {
+    color: $font-color;
+}
+
+.TopHeader {
+    @include headerSection();
+}
+
+.HeaderTitle {
+    font-size: 26px;
+    margin: auto auto auto 50px;
+}
+
+.HeaderTheme {
+    margin: auto 0 auto auto;
+    display:  flex;
+    gap: 10px;
+    border: 1px solid $border;
+    border-radius: 15px;
+}
+
+.HeaderThemeBlock {
+    border: 1px solid $border;
+    cursor: pointer;
+    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.HeaderThemeImg {
+    margin: auto;
+    height: 30px;
+    width: 30px;
+}
+
+.HeaderLinks {
+    margin: auto 50px auto 50px;
+    display: flex;
+    gap: 10px;
+}
+
+.HeaderLink {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.BottomHeader {
+    @include headerSection();
+}
+
+.HeaderFind {
+    margin: auto auto auto 50px;
+    padding: 5px;
+    font-size: 22px;
+    outline: none;
+    border: 1px solid $primary;
+}
+
+.HeaderProfile {
+    margin: auto 50px auto auto;
+}
+
+.HeaderProfileSection {
+    display: flex;
+    gap: 10px;
+}
+
+.HeaderProfileBlock {
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid $border;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid $primary;
+        background-color: $primary-light;
+    }
+}

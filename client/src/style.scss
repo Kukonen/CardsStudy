@@ -1,0 +1,6 @@
+@import "./Themes/index.scss";
+
+body, #root {
+    font-family: Roboto;
+    background-color: $document-background;
+}
