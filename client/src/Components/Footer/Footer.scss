@@ -1,0 +1,10 @@
+@import "../../Themes//index.scss";
+
+#Footer {
+    border: 1px solid $border;
+    margin-top: auto;
+    margin-bottom: 0;
+    padding: 10px;
+    background-color: $background;
+    flex: -1 0 auto;
+}

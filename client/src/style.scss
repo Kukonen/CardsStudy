@@ -3,4 +3,9 @@
 body, #root {
     font-family: Roboto;
     background-color: $document-background;
+    min-height: 100vh
+}
+
+body {
+    margin: 0;
 }
