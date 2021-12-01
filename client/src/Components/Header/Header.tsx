@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import './Header.scss';
+import { Link } from "react-router-dom";
 
 import DarkIcon from './dark.svg';
 import LightIcon from './light.svg';
@@ -15,9 +16,9 @@ const Header = () => {
     return (
         <div className="Header">
             <div className="TopHeader">
-                <div className="HeaderTitle">
+                <Link to='/' className="HeaderTitle">
                     Cards Study
-                </div>
+                </Link>
                 <div className="HeaderTheme">
                     <div className="HeaderThemeBlock">
                         <img src={LightIcon} alt="light" className="HeaderThemeImg" />
@@ -27,12 +28,12 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="HeaderLinks">
-                    <div className="HeaderLink">
+                    <Link to="/popular" className="HeaderLink">
                         Popular
-                    </div>
-                    <div className="HeaderLink">
+                    </Link>
+                    <Link to="/new" className="HeaderLink">
                         New
-                    </div>
+                    </Link>
                 </div>
             </div>
             <div className="BottomHeader">
@@ -47,12 +48,12 @@ const Header = () => {
                         </div> :
                             auth === 'notauth' ?
                                 <div className="HeaderProfileSection">
-                                    <div className="HeaderProfileBlock">
+                                    <Link to='/register' className="HeaderProfileBlock">
                                         Sign up
-                                    </div>
-                                    <div className="HeaderProfileBlock">
+                                    </Link>
+                                    <Link to='/login' className="HeaderProfileBlock">
                                         Sign in
-                                    </div>
+                                    </Link>
                                 </div> :
                                 null
                 }

@@ -1,0 +1,58 @@
+@import "../../Themes//index.scss";
+
+@mixin buttonSection {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.Auth {
+    display: flex;
+    flex-direction: column;
+}
+
+.AuthSection {
+    margin: 100px auto auto auto;
+    background-color: $background;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $border;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.AuthHeadline {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.AuthInput {
+    margin-top: 10px;
+    @include Input(20px);
+}
+
+.AuthButtonSection {
+    @include buttonSection();
+}
+
+.AuthButton {
+    border: 1px solid $primary;
+    cursor: pointer;
+    background-color: $primary-light;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.AuthErrorSection {
+    @include buttonSection();
+}
+
+.AuthError {
+    background-color: $error-light;
+    border: 1px solid $error;
+    border-radius: 5px;
+    color: $background;
+    padding: 5px;
+}
