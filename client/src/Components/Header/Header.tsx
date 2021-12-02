@@ -42,9 +42,9 @@ const Header = () => {
                 {
                     auth === 'auth' ? 
                         <div className="HeaderProfileSection">
-                            <div className="HeaderProfileBlock">
-                                Profile
-                            </div>
+                            <Link to='/profile' className="HeaderProfileBlock">
+                                    Profile
+                                </Link>
                         </div> :
                             auth === 'notauth' ?
                                 <div className="HeaderProfileSection">

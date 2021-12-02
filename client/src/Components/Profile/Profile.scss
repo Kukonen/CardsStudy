@@ -1,0 +1,36 @@
+@import "../../Themes//index.scss";
+
+@mixin profileHeaderBlock($bg-color, $border-color) {
+    background-color: $background;
+    border: 1px solid $border-color;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    &:hover {
+        background-color: $bg-color;
+    }
+}
+
+#Profile {
+    margin-top: 10px;
+}
+
+#ProfileHeader {
+    background-color: $background;
+    border: 1px solid $border;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.ProfileHeaderBlock {
+    @include profileHeaderBlock($document-background, $border);
+}
+
+.ProfileHeaderBlockActive {
+    @include profileHeaderBlock($primary-light, $primary);
+}
+
+#ProfileContent {
+    
+}
