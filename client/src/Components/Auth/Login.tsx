@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import './Auth.scss';
 
-const Login = () => {
+const Login = (props:any) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,12 +16,16 @@ const Login = () => {
             return;
         }
 
-        axios.post('/auth/login').then(response => {
+        axios.post('/auth/login', {
+            email, 
+            password
+        }).then(response => {
             setError(false);
             localStorage.setItem('auth', 'auth');
             const user = {
                 name: response.data.name,
-                status: response.data.status
+                avatar: response.data.avatar,
+                role: response.data.role
             };
             localStorage.setItem('user', JSON.stringify(user));
             setDone(true);
@@ -54,9 +58,9 @@ const Login = () => {
                     placeholder="password"
                 />
                 <div className="AuthButtonSection">
-                    <div className="AuthButton"
+                    <button className="AuthButton"
                         onClick={() => Send()}
-                    >Send</div>
+                    >Send</button>
                 </div>
             </div>
             <div className="AuthErrorSection"
@@ -68,7 +72,7 @@ const Login = () => {
             </div>
             {
                 done ?
-                    <Navigate to='/' /> :
+                    document.location.href="/" :
                     null
             }
         </div>

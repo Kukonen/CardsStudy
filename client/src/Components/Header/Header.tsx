@@ -1,17 +1,28 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Header.scss';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import DarkIcon from './dark.svg';
 import LightIcon from './light.svg';
 
-const Header = () => {
+const Header = (props: any) => {
 
     type themeType = 'light' | 'dark' | null | undefined;
     type authType = 'auth' | 'notauth' | null | undefined;
 
     const [theme, setTheme] = useState<themeType>(localStorage.getItem('theme') as themeType);
     const [auth, setAuth] = useState<authType>(localStorage.getItem('auth') as authType || 'notauth');
+
+    const logOut = () => {
+        axios.get('/auth/logout').then(() => {
+            localStorage.removeItem('user');
+            localStorage.setItem('auth', 'notauth');
+            setAuth('notauth');
+        }).catch(() => {
+
+        })
+    }
 
     return (
         <div className="Header">
@@ -42,9 +53,14 @@ const Header = () => {
                 {
                     auth === 'auth' ? 
                         <div className="HeaderProfileSection">
-                            <Link to='/profile' className="HeaderProfileBlock">
+                                <Link to='/profile' className="HeaderProfileBlock">
                                     Profile
                                 </Link>
+                                <div className="HeaderProfileBlock"
+                                    onClick={ () => logOut() }
+                                >
+                                    Log out
+                                </div>
                         </div> :
                             auth === 'notauth' ?
                                 <div className="HeaderProfileSection">

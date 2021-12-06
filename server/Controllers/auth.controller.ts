@@ -87,6 +87,12 @@ class AuthController {
             }
         })
     }
+
+    logout(request:Request, response:Response) {
+        response.clearCookie('accessToken');
+        response.clearCookie('refreshToken');
+        return response.status(200).send();
+    }
 }
 
 module.exports = new AuthController();

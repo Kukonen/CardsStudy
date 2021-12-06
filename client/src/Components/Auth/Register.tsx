@@ -16,12 +16,17 @@ const Register = () => {
             return;
         }
 
-        axios.post('/auth/register').then(response => {
+        axios.post('/auth/register', {
+            name,
+            email, 
+            password
+        }).then(response => {
             setError(false);
             localStorage.setItem('auth', 'auth');
             const user = {
                 name: response.data.name,
-                status: response.data.status
+                avatar: response.data.avatar,
+                role: response.data.role
             };
             localStorage.setItem('user', JSON.stringify(user));
             setDone(true);
@@ -63,9 +68,9 @@ const Register = () => {
                     placeholder="password"
                 />
                 <div className="AuthButtonSection">
-                    <div className="AuthButton"
+                    <button className="AuthButton"
                         onClick={() => Send()}
-                    >Send</div>
+                    >Send</button>
                 </div>
             </div>
             <div className="AuthErrorSection"
@@ -77,7 +82,7 @@ const Register = () => {
             </div>
             {
                 done ?
-                    <Navigate to='/' /> :
+                    document.location.href="/" :
                     null
             }
         </div>
