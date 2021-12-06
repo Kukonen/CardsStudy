@@ -1,0 +1,49 @@
+@import "../../../Themes//index.scss";
+
+@mixin profileSideBarItem($bg-color, $border-color) {
+    padding: 10px;
+    background-color: $background;
+    border: 1px solid $border-color;
+    text-align: center;
+    width: 150px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 18px;
+    &:first-of-type {
+        margin-top: 0;
+    }
+    &:hover {
+        background-color: $bg-color;
+    }
+}
+
+.ProfileSettings {
+    display: flex;
+    margin-top: 10px;
+}
+
+.ProfileSideBar-Section {
+    width: 30%;
+    display: flex;
+}
+
+.ProfileSideBar-Block {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $background;
+}
+
+.ProfileSideBarItem {
+    @include profileSideBarItem($document-background, $border);
+}
+
+.ProfileSideBarItemActive {
+    @include profileSideBarItem($primary-light, $primary);
+}
+
+.ProfileContent {
+    width: 70%;
+    padding: 10px;
+}

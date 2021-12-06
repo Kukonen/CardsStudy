@@ -5,30 +5,52 @@ import Favorite from './Modes/Favorite';
 import MyPage from './Modes/MyPage';
 import Settings from './Modes/Settings';
 
+import Avatar from './Avatar.png';
+
+interface IUser {
+    name?: string;
+    avatar?: string;
+    role?: string;
+}
 
 const Profile = () => {
 
     type profileModes = 'favorite' | 'myPage' | 'settings';
-
     const [profileMode, setProfileMode] = useState<profileModes>('favorite');
+
+    const user:IUser = JSON.parse(localStorage.getItem('user') as string);
+
+    if (localStorage.getItem('auth') !== 'auth') {
+        return null;
+    }
 
     return (
         <div id="Profile">
             <div id="ProfileHeader">
+                <div className="ProfileHeaderAvatarBlock">
+                    <img 
+                        src={user.avatar ? user.avatar : Avatar} 
+                        alt="avatar" 
+                        className="ProfileHeaderAvatar"
+                    />
+                </div>
+                <div className="ProfileHeaderName">
+                    {user.name}
+                </div>
                 <div 
-                    className= {profileMode === 'favorite' ? "ProfileHeaderBlock" : "ProfileHeaderBlockActive"}
+                    className= {profileMode === 'favorite' ? "ProfileHeaderBlockActive" : "ProfileHeaderBlock"}
                     onClick={() => setProfileMode('favorite')}
                 >
                     Favorite
                 </div>
                 <div 
-                    className= {profileMode === 'myPage' ? "ProfileHeaderBlock" : "ProfileHeaderBlockActive"}
+                    className= {profileMode === 'myPage' ? "ProfileHeaderBlockActive" : "ProfileHeaderBlock"}
                     onClick={() => setProfileMode('myPage')}
                 >
                     My Page
                 </div>
                 <div 
-                    className= {profileMode === 'settings' ? "ProfileHeaderBlock" : "ProfileHeaderBlockActive"}
+                    className= {profileMode === 'settings' ? "ProfileHeaderBlockActive" : "ProfileHeaderBlock"}
                     onClick={() => setProfileMode('settings')}
                 >
                     Settings

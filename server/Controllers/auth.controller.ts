@@ -53,6 +53,12 @@ class AuthController {
             })
         });
 
+        if (!(password && user.password)) {
+            return response.status(400).json({
+                discription: "password does not found"
+            })
+        }
+
         const paswordMatch = await bcrypt.compare(password, user.password);
 
         if (paswordMatch) {
