@@ -3,7 +3,7 @@ import './Profile.scss';
 
 import Favorite from './Modes/Favorite';
 import MyPage from './Modes/MyPage';
-import Settings from './Modes/Settings';
+import Settings from './Modes/Settings/Settings';
 
 import Avatar from './Avatar.png';
 

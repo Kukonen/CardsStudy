@@ -10,9 +10,11 @@ app.use(cookieParser());
 app.use(express.json());
 
 // routes
-const authRoute = require('./Routers/auth.router');
+import authRoute from './Routers/auth.router';
+import profileRoute from './Routers/profile.router';
 
 app.use('/auth', authRoute);
+app.use('/profile', profileRoute);
 
 const PORT = process.env.PORT || 3030;
 

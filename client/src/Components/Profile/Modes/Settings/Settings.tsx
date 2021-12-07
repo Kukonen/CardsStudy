@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import './ProfileModes.scss';
+import '../ProfileModes.scss';
+import Avatar from "./Avatar";
+import Name from "./Name";
+import Password from "./Password";
 
 const Settings = () => {
     
@@ -31,7 +34,12 @@ const Settings = () => {
                 </div>
             </div>
             <div className="ProfileContent">
-
+                {
+                    mode === 'name' ? <Name /> :
+                    mode === 'avatar' ? <Avatar /> :
+                    mode === 'password' ? <Password /> :
+                    null
+                }
             </div>
         </div>
     )
