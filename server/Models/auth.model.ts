@@ -64,7 +64,7 @@ class AuthModel {
         return true;
     }
 
-    public async checkAndUpdateToken(accessToken: string, refreshToken: string): Promise<ITwoTokens> {
+    public async checkAndUpdateToken(accessToken: string, refreshToken: string): Promise<ITwoTokens | Error> {
 
         let user = await User.findOne({accessToken});
         
@@ -76,13 +76,13 @@ class AuthModel {
                 accessToken = this.getAccessToken();
                 user.accessToken = accessToken;
             } else {
-                new Error("User unauthorized");
+                return new Error("User unauthorized");
             }
         }
 
         const now = new Date().getTime();
 
-        // check access token date 
+        // check access token date
         const userAccessToken = user.accessToken.split('.');
         if (userAccessToken[1] > now) {
             accessToken = this.getAccessToken();

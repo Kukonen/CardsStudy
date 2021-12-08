@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Name = () => {
+const Name = (props:any) => {
+
+    const {changeHeaderName} = props;
 
     const [name, setName] = useState("");
     const [error, setError] = useState<boolean>(false);
@@ -12,7 +14,12 @@ const Name = () => {
             return;
         }
 
-        axios.post('/profile/changename', {name}).then(() => {
+        axios.post('/profile/changename', {name}).then(result => {
+            const newName = result.data;
+            let user = JSON.parse(localStorage.getItem('user') as string);
+            user.name = newName;
+            localStorage.setItem('user', JSON.stringify(user));
+            changeHeaderName(newName);
             setSuccess(true);
         }).catch(() => {
             setError(true);
@@ -42,7 +49,7 @@ const Name = () => {
                         </button>
                     </div>
                     {
-                    error ?
+                    success ?
                         <div className="ProfileSettingsResultSection">
                             <div className="ProfileSettingsSuccessBlock">
                                 Name was changed!
@@ -51,7 +58,7 @@ const Name = () => {
                         null
                 }
                 {
-                    success ?
+                    error ?
                         <div className="ProfileSettingsResultSection">
                             <div className="ProfileSettingsErrorBlock">
                                 That's Wents Wrong!

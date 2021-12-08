@@ -6,7 +6,7 @@ class ProfileController {
     async changeName(request:Request, response:Response) {
         const {name} = request.body;
 
-        const accessToken:string = request.cookies.acessToken;
+        const accessToken:string = request.cookies.accessToken;
         const refreshToken:string = request.cookies.refreshToken;
 
         try {

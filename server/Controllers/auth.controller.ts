@@ -77,7 +77,7 @@ class AuthController {
     }
 
     async checkUserStatus(request:Request, response:Response) {
-        let accessToken:string = request.cookies.acessToken;
+        let accessToken:string = request.cookies.accessToken;
         let refreshToken:string = request.cookies.refreshToken;
 
         AuthModel.checkAndUpdateToken(accessToken, refreshToken).then((responseAccessToken: string, responseRefreshToken: string) => {

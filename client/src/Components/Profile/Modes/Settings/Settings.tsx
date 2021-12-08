@@ -4,7 +4,9 @@ import Avatar from "./Avatar";
 import Name from "./Name";
 import Password from "./Password";
 
-const Settings = () => {
+const Settings = (props:any) => {
+
+    const {changeHeaderName} = props;
     
     type ModeType = "name" | "avatar" | "password" 
     const [mode, setMode] = useState<ModeType>("name");
@@ -35,7 +37,7 @@ const Settings = () => {
             </div>
             <div className="ProfileContent">
                 {
-                    mode === 'name' ? <Name /> :
+                    mode === 'name' ? <Name changeHeaderName={(name:string) => changeHeaderName(name)}/> :
                     mode === 'avatar' ? <Avatar /> :
                     mode === 'password' ? <Password /> :
                     null

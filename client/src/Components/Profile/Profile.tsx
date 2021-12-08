@@ -18,7 +18,12 @@ const Profile = () => {
     type profileModes = 'favorite' | 'myPage' | 'settings';
     const [profileMode, setProfileMode] = useState<profileModes>('favorite');
 
-    const user:IUser = JSON.parse(localStorage.getItem('user') as string);
+    const user:IUser =  (JSON.parse(localStorage.getItem('user') as string));
+    const [name, setName] = useState<string>(user.name || "");
+
+    const changeHeaderName = (newName:string) => {
+        setName(newName);
+    }
 
     if (localStorage.getItem('auth') !== 'auth') {
         return null;
@@ -35,7 +40,7 @@ const Profile = () => {
                     />
                 </div>
                 <div className="ProfileHeaderName">
-                    {user.name}
+                    {name}
                 </div>
                 <div 
                     className= {profileMode === 'favorite' ? "ProfileHeaderBlockActive" : "ProfileHeaderBlock"}
@@ -63,7 +68,7 @@ const Profile = () => {
                 profileMode === 'myPage' ?
                     <MyPage /> :
                 profileMode === 'settings' ?
-                    <Settings /> :
+                    <Settings changeHeaderName={(name:string) => changeHeaderName(name)}/> :
                 null
             }
             </div>
