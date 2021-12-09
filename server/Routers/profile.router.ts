@@ -5,5 +5,6 @@ const ProfileController = require('../Controllers/profile.controller');
 route.post('/changename', ProfileController.changeName);
 route.post('/changepassword', ProfileController.changePassword);
 route.post('/changeavatar', ProfileController.changeAvatar)
+route.get('/getuserdata', ProfileController.getUserData)
 
 export default route;

@@ -13,7 +13,7 @@ interface IValidationDiscription {
 }
 
 class AuthModel {
-    private getRandomString(length:number):string {
+    public getRandomString(length:number):string {
         const symbols = "1234567890qwertyuiopasdfghjklzxvbnmQWERTYUIOASDFGHJLZXCVBNM";
 
         let randomString:string = "";

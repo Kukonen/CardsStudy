@@ -8,6 +8,8 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static('static'));
+
 
 // routes
 import authRoute from './Routers/auth.router';

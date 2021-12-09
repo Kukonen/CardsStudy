@@ -6,7 +6,7 @@ import Password from "./Password";
 
 const Settings = (props:any) => {
 
-    const {changeHeaderName} = props;
+    const {changeHeaderName, changeHeaderAvatar} = props;
     
     type ModeType = "name" | "avatar" | "password" 
     const [mode, setMode] = useState<ModeType>("name");
@@ -38,7 +38,7 @@ const Settings = (props:any) => {
             <div className="ProfileContent">
                 {
                     mode === 'name' ? <Name changeHeaderName={(name:string) => changeHeaderName(name)}/> :
-                    mode === 'avatar' ? <Avatar /> :
+                    mode === 'avatar' ? <Avatar changeHeaderAvatar={(avatar: string) => changeHeaderAvatar(avatar)}/> :
                     mode === 'password' ? <Password /> :
                     null
                 }
