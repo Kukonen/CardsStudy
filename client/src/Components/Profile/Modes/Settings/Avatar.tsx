@@ -35,7 +35,7 @@ const Avatar = (props:any) => {
 
     return (
                 <div className="ProfileSettingsContent">
-                    <div className="ProfileSettingsHeadline">Change Name</div>
+                    <div className="ProfileSettingsHeadline">Change Avatar</div>
                     <input 
                         ref={avatarRef} 
                         type="file"
