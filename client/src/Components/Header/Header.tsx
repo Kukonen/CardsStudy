@@ -53,6 +53,9 @@ const Header = (props: any) => {
                 {
                     auth === 'auth' ? 
                         <div className="HeaderProfileSection">
+                                <Link to='/create' className="HeaderProfileBlock">
+                                    Create Card
+                                </Link>
                                 <Link to='/profile' className="HeaderProfileBlock">
                                     Profile
                                 </Link>

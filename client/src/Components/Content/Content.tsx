@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../Auth/Login";
 import Register from "../Auth/Register";
 import Profile from '../Profile/Profile';
+import Create from '../Create/Create';
 
 const Content = () => {
     return (
@@ -13,6 +14,7 @@ const Content = () => {
                 <Route  path='/login' element={<Login />}/>
                 <Route path='/register' element={<Register />}/>
                 <Route path='/profile' element={<Profile />}/>
+                <Route path='/create' element={<Create />}/>
             </Routes>
         </div>
     )

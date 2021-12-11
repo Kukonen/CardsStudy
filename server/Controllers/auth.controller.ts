@@ -11,7 +11,6 @@ class AuthController {
 
         await AuthModel.createUser(name, email, password).then((status:boolean) => {
             createStatus = status;
-            console.log(createStatus)
         })
 
         if (createStatus) {

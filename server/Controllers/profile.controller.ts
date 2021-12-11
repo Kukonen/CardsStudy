@@ -90,8 +90,6 @@ class ProfileController {
 
         const changePasswordFromDB = await ChangePassword.findOne({path: id});
 
-        console.log(id)
-
         if (!changePasswordFromDB) {
             return response.status(400).redirect(process.env.SITEPATH as string);
         }
