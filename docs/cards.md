@@ -5,11 +5,11 @@
 | Name | Type | Discription |
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
-| authtor | Strings | person id, who create this card |
+| authtor | String | person id, who create this card |
 | title | String | Title cards |
 | cards | Array | this is cards |
-| likes | Number | users's likes |
-| comments | Array | гuser's comments |
+| likes | String[] | id users who likes |
+| comments | Array | user's comments |
 
 ## Cards field
 
@@ -17,7 +17,7 @@
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
 | title | String | title this card* |
-| text | Strings | text this card |
+| text | String | text this card |
 | type | string** | type of card |
 | content | Object | content with type |
 
@@ -35,9 +35,9 @@
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
 | block1 | String | text of first block |
-| block2 | Strings | text of second block |
+| block2 | String | text of second block |
 | correct | Number* | number of correct block |
-| points | Object | reward for correct answer |
+| points | number | reward for correct answer |
 
 \* number 'block1' is 1 and 'block2' is 2
 
@@ -47,11 +47,11 @@
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
 | block1 | String | text of first block |
-| block2 | Strings | text of second block |
+| block2 | String | text of second block |
 | block3 | String | text of third block |
-| block4 | Strings | text of fourth block |
+| block4 | String | text of fourth block |
 | correct | Number* | number of correct block |
-| points | Object | reward for correct answer |
+| points | number | reward for correct answer |
 
 \* number 'block1' is 1 and 'block2' is 2 and 'block3' is 3 and 'block4' is 4
 
@@ -62,16 +62,25 @@
 | id | String  | Unique key |
 | text | String | user's typing text |
 | correct | String | text of correct answer |
-| points | Object | reward for correct answer |
+| points | number | reward for correct answer |
 
 ## Comments field
 
 | Name | Type | Discription |
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
-| authtor | Strings | person id, who create this comment |
+| authtor | String | person id, who create this comment |
 | text | String | Comment's text |
-| lines | Number | amount user's likes of this comment |
+| likes | String[] | amount user's likes of this comment |
 | comments* | Array | comment's from this comment |
 
 \* comments by this comment have same interface
+
+## Results field
+
+| Name | Type | Discription |
+| ------ | ------ | ------ | 
+| id | String  | Unique key |
+| title | String | title of this result |
+| text | String | text of this result |
+| points | Number | how much points need to get this result |
