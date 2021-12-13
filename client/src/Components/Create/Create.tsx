@@ -16,20 +16,22 @@ const Create = () => {
 
     return (
         <div id="Create">
-            <Title/>
-            <Card />
-            <button
-                onClick={() => createCards()}
-            >
-                Create!
-            </button>
-            {
-                error ? 
-                    <div>
-                        That's was wrong!
-                    </div> :
-                    null
-            }
+            <div id="CreateSection">
+                <Title/>
+                <Card />
+                <button
+                    onClick={() => createCards()}
+                >
+                    Create!
+                </button>
+                {
+                    error ? 
+                        <div>
+                            That's was wrong!
+                        </div> :
+                        null
+                }
+            </div>
         </div>
     )
 }
