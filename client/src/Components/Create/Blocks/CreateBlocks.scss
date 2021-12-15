@@ -24,6 +24,19 @@
     justify-content: center;
 }
 
+#CardText {
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.CreateInputTextarea {
+    @include Input(22px);
+    resize: none;
+    width: 500px;
+}
+
 .CardInputRadioBlock {
     display: inline-block;
 	margin-right: 10px;

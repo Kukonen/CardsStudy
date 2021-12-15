@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { ICard } from '../CreateProps';
 import './CreateBlocks.scss';
 
+import Block2 from './Types/Block2';
+import Block4 from './Types/Block4';
+import Text from './Types/Text';
+
 const Card = () => {
 
     const [title, setTitle] = useState<string>("");
+    const [text, setText] = useState<string>("");
 
     type cardTypeType = "2block" | "4block" | "text"
     const [cardType, setCardType] = useState<cardTypeType>("2block")
@@ -18,6 +23,15 @@ const Card = () => {
                     value={title} 
                     onChange={event => setTitle(event.target.value)}
                     placeholder="Title of This Card"
+                />
+            </div>
+            <div id="CardText">
+                <textarea
+                    rows={5}
+                    className="CreateInputTextarea"
+                    defaultValue={text}
+                    onChange={event => setText(event.target.value)}
+                    placeholder="Text of This Card"
                 />
             </div>
             <div id="CardType">
@@ -66,9 +80,16 @@ const Card = () => {
                         Text
                     </label>
                 </div>
-                <div>
-                </div>
             </div>
+            {
+                cardType === "2block" ? 
+                    <Block2 /> :
+                cardType === "4block" ?
+                    <Block4 /> :
+                cardType === "text" ?
+                    <Text /> :
+                    null
+            }
         </div>
     )
 }
