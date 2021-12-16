@@ -6,6 +6,8 @@ import Block2 from './Types/Block2';
 import Block4 from './Types/Block4';
 import Text from './Types/Text';
 
+import Points from "./Points";
+
 const Card = () => {
 
     const [title, setTitle] = useState<string>("");
@@ -90,6 +92,7 @@ const Card = () => {
                     <Text /> :
                     null
             }
+            <Points />
         </div>
     )
 }
