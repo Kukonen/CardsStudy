@@ -71,3 +71,34 @@
     display: flex;
     justify-content: center;
 }
+
+.CreateInputBlocksSection {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.CreateInputBlocksBlock {
+  display: flex;
+  gap: 5px;
+}
+
+.CreateCorrectBlocks {
+  background-color: $document-background;
+  border: 1px solid $border;
+  border-radius: 15px;
+  height: 32.8px;
+  width: 32.8px;
+  cursor: pointer;
+}
+
+.CreateCorrectImgBlocks {
+  height: 30px;
+  width: 30px;
+  margin: auto;
+}
+
+.CreateInputBlocks {
+  @include Input(18px);
+  text-align: center;
+}
