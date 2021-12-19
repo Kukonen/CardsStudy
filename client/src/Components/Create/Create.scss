@@ -9,3 +9,23 @@
     width: 70%;
     padding: 10px;
 }
+
+.CreateButtonSection {
+    padding: 10px;
+    background: $background;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.CreateButton {
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid $border;
+    background: $background;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid $primary;
+        background: $primary-light;
+    }
+}

@@ -117,3 +117,23 @@
   @include Input(18px);
   width: 200px;
 }
+
+.CardButtonSection {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.CardButton {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 15px;
+  line-height: 34px;
+  background: $background;
+  border: 1px solid $border;
+  &:hover {
+    border: 1px solid $primary;
+    background: $primary-light;
+  }
+}

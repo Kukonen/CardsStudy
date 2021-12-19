@@ -19,11 +19,15 @@ const Create = () => {
             <div id="CreateSection">
                 <Title/>
                 <Card />
-                <button
-                    onClick={() => createCards()}
-                >
-                    Create!
-                </button>
+                <div className="CreateButtonSection">
+                    <button
+                        className="CreateButton"
+                        onClick={() => createCards()}
+                    >
+                        Create!
+                    </button>
+                </div>
+
                 {
                     error ? 
                         <div>

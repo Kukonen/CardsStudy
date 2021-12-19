@@ -93,6 +93,13 @@ const Card = () => {
                     null
             }
             <Points />
+            <div className="CardButtonSection">
+                <button
+                    className="CardButton"
+                >
+                    Save and create new card
+                </button>
+            </div>
         </div>
     )
 }
