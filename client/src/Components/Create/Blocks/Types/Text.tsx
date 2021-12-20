@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import '../CreateBlocks.scss';
 
-const Text = () => {
+const Text = (props:any) => {
+
+    const {changeAnswer} = props;
 
     const [text, setText] = useState<string>("");
 
@@ -13,7 +15,10 @@ const Text = () => {
                         type="text"
                         className="CreateInput"
                         value={text}
-                        onChange={event => setText(event.target.value)}
+                        onChange={event => {
+                            setText(event.target.value);
+                            changeAnswer(event.target.value);
+                        }}
                     />
                 </div>
             </div>

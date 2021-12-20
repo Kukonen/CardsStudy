@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { ICard } from '../CreateProps';
 import './CreateBlocks.scss';
 
@@ -6,15 +6,42 @@ import Block2 from './Types/Block2';
 import Block4 from './Types/Block4';
 import Text from './Types/Text';
 
-import Points from "./Points";
+interface I2Block {
+    block1: string;
+    block2: string;
+    correct: 1 | 2;
+}
+
+interface I4Block {
+    block1: string;
+    block2: string;
+    block3: string;
+    block4: string;
+    correct: 1 | 2 | 3 | 4;
+}
 
 const Card = () => {
 
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
+    const [points, setPoints] = useState<number>(0);
 
     type cardTypeType = "2block" | "4block" | "text"
     const [cardType, setCardType] = useState<cardTypeType>("2block")
+
+    const [answer, setAnswer] = useState<string | I2Block | I4Block>("");
+
+    const saveAndCreateNewCard = () => {
+        saveCard(title, text, cardType, answer)
+    }
+
+    const saveCard = (title:string, text:string, type:cardTypeType, answer:string | I2Block | I4Block) => {
+        console.log(answer);
+    }
+
+    const createCard = () => {
+
+    }
 
     return (
         <div id="Card">
@@ -85,17 +112,33 @@ const Card = () => {
             </div>
             {
                 cardType === "2block" ? 
-                    <Block2 /> :
+                    <Block2 changeAnswer={(newAnswer:I2Block) => setAnswer(newAnswer)}/> :
                 cardType === "4block" ?
-                    <Block4 /> :
+                    <Block4 changeAnswer={(newAnswer:I4Block) => setAnswer(newAnswer)}/> :
                 cardType === "text" ?
-                    <Text /> :
+                    <Text changeAnswer={(newAnswer:string) => setAnswer(newAnswer)}/> :
                     null
             }
-            <Points />
+            <div id="CreatePoints">
+                    <span>
+                      Points:
+                    </span>
+                <input
+                    type="number"
+                    size={2}
+                    className="CreatePointsInput"
+                    value={points}
+                    onChange={event => {
+                        const newPoints = Number(event.target.value);
+                        setPoints(newPoints);
+                    }
+                    }
+                />
+            </div>
             <div className="CardButtonSection">
                 <button
                     className="CardButton"
+                    onClick={() => saveAndCreateNewCard()}
                 >
                     Save and create new card
                 </button>

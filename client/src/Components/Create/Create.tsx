@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from './Blocks/Card';
-import Title from './Blocks/Title';
 import './Create.scss';
-import { ICard } from './CreateProps';
+import {ICard, ICards} from './CreateProps';
+import './Blocks/CreateBlocks.scss';
+import CardNavBar from "./Blocks/CardNavBar";
 
 const Create = () => {
 
-    const [Cards, setCards] = useState<ICard[]>([]);
-
     const [error, setError] = useState<number | null>(null);
+
+    const [title, setTitle] = useState("");
+
+    const CardsAlreadyHave:ICards = JSON.parse(localStorage.getItem('cards') || '{}');
 
     const createCards = () => {
 
@@ -17,7 +20,17 @@ const Create = () => {
     return (
         <div id="Create">
             <div id="CreateSection">
-                <Title/>
+                <div id="CreateTitle">
+                    <input type="text"
+                           value={title}
+                           onChange={event => {
+                               setTitle(event.target.value);
+                           }}
+                           className="CreateInput"
+                           placeholder="Title of Cards"
+                    />
+                </div>
+                <CardNavBar />
                 <Card />
                 <div className="CreateButtonSection">
                     <button

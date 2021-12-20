@@ -19,7 +19,6 @@
 
 #CardTitle {
     padding: 10px;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
@@ -136,4 +135,25 @@
     border: 1px solid $primary;
     background: $primary-light;
   }
+}
+
+.CreateNavBar {
+  display: flex;
+  margin-top: 15px;
+}
+
+.CreateNavBarItem {
+  background: $background;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid $border;
+  border-top-right-radius: 14px;
+}
+
+.CreateNavBarItemActive {
+  background: $primary-light;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid $primary;
+  border-top-right-radius: 14px;
 }
