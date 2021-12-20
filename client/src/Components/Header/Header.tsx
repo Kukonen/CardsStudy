@@ -8,10 +8,8 @@ import LightIcon from './light.svg';
 
 const Header = (props: any) => {
 
-    type themeType = 'light' | 'dark' | null | undefined;
     type authType = 'auth' | 'notauth' | null | undefined;
 
-    const [theme, setTheme] = useState<themeType>(localStorage.getItem('theme') as themeType);
     const [auth, setAuth] = useState<authType>(localStorage.getItem('auth') as authType || 'notauth');
 
     const logOut = () => {

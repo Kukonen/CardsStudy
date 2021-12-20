@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { ICard } from '../CreateProps';
 import './CreateBlocks.scss';
 
@@ -26,17 +26,32 @@ const Card = () => {
     const [text, setText] = useState<string>("");
     const [points, setPoints] = useState<number>(0);
 
-    type cardTypeType = "2block" | "4block" | "text"
-    const [cardType, setCardType] = useState<cardTypeType>("2block")
+    type cardTypeType = "blocks2" | "blocks4" | "text"
+    const [cardType, setCardType] = useState<cardTypeType>("blocks2")
 
     const [answer, setAnswer] = useState<string | I2Block | I4Block>("");
 
     const saveAndCreateNewCard = () => {
-        saveCard(title, text, cardType, answer)
+        saveCard(title, text, cardType, answer);
+        createCard();
     }
 
     const saveCard = (title:string, text:string, type:cardTypeType, answer:string | I2Block | I4Block) => {
-        console.log(answer);
+
+        // // let content = answer;
+        // // // as ICardContentBlock2 | ICardContentBlock4 | ICardContentText
+        // // content.id = "32312312";
+        // const id = "e4232"
+        //
+        // const card:ICard = {
+        //     title,
+        //     text,
+        //     type: cardType,
+        //     content: {
+        //         id,
+        //         answer
+        //     }
+        // }
     }
 
     const createCard = () => {
@@ -70,11 +85,11 @@ const Card = () => {
                         id="CardInputRadioBlock2"
                         name="type"
                         className="CardInputRadio"
-                        checked={cardType === "2block"}
+                        defaultChecked={cardType === "blocks2"}
                     />
                     <label 
                         htmlFor="CardInputRadioBlock2"
-                        onClick={() => setCardType("2block")}
+                        onClick={() => setCardType("blocks2")}
                     >
                         2 - block
                     </label>
@@ -85,11 +100,11 @@ const Card = () => {
                         id="CardInputRadioBlock4"
                         name="type"
                         className="CardInputRadio"
-                        checked={cardType === "4block"}
+                        defaultChecked={cardType === "blocks4"}
                     />
                     <label 
                         htmlFor="CardInputRadioBlock4"
-                        onClick={() => setCardType("4block")}
+                        onClick={() => setCardType("blocks4")}
                     >
                         4 - block
                     </label>
@@ -100,7 +115,7 @@ const Card = () => {
                         id="CardInputRadioText"
                         name="type"
                         className="CardInputRadio"
-                        checked={cardType === "text"}
+                        defaultChecked={cardType === "text"}
                     />
                     <label 
                         htmlFor="CardInputRadioText"
@@ -111,9 +126,9 @@ const Card = () => {
                 </div>
             </div>
             {
-                cardType === "2block" ? 
+                cardType === "blocks2" ?
                     <Block2 changeAnswer={(newAnswer:I2Block) => setAnswer(newAnswer)}/> :
-                cardType === "4block" ?
+                cardType === "blocks4" ?
                     <Block4 changeAnswer={(newAnswer:I4Block) => setAnswer(newAnswer)}/> :
                 cardType === "text" ?
                     <Text changeAnswer={(newAnswer:string) => setAnswer(newAnswer)}/> :
