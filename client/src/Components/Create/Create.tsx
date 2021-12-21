@@ -11,6 +11,10 @@ const Create = () => {
 
     const [title, setTitle] = useState("");
 
+    const [currentCard, setCurrentCard] = useState(0);
+    const [currentCardIndex, setCurrentCardIndex] = useState<number>(0)
+    const [cardLength, setCardLength] = useState<number>(1);
+
     const createCards = () => {
 
     }
@@ -28,8 +32,16 @@ const Create = () => {
                            placeholder="Title of Cards"
                     />
                 </div>
-                <CardNavBar />
-                <Card />
+                <CardNavBar
+                    currentCardIndex={currentCardIndex}
+                    setCurrentCardIndex={(cardIndex:number) => setCurrentCardIndex(cardIndex)}
+                    cardLength={cardLength}
+                />
+                <Card
+                    currentCard={currentCard}
+                    cardLength={cardLength}
+                    setCardLength={(newLength:number) => setCardLength(newLength)}
+                />
                 <div className="CreateButtonSection">
                     <button
                         className="CreateButton"
