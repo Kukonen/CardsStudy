@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import card from "./Card";
 
 const CardNavBar = (props:any) => {
 
@@ -6,70 +7,53 @@ const CardNavBar = (props:any) => {
 
     const [currentIndex, setCurrentIndex] = useState<number>(currentCardIndex);
 
-    const [NavBarItemsElements, setNavBarItemsElements] = useState<any | null>( []);
+    const [NavBarItemsElements, setNavBarItemsElements] = useState<any | any[]>( []);
+
+    const [reloadComponent, setReloadComponent] = useState<boolean>(false);
 
     useEffect(() => {
-
         if (!NavBarItemsElements) {
             return;
         }
 
-        console.log(NavBarItemsElements)
         let cardArray:any[] = NavBarItemsElements;
 
+        cardArray.push(getNewNabBarItem(cardLength))
 
-        cardArray.push(
-            <button
-                key={cardLength}
-                className={currentIndex === cardLength ? "CreateNavBarItemActive" : "CreateNavBarItem"}
-                onClick={() => {
-                    setCurrentIndex(cardLength)
-                    setCurrentCardIndex(cardLength);
-                }}
-            >
-                {cardLength}
-            </button>
-        )
         setNavBarItemsElements(cardArray);
+
+        setReloadComponent(!reloadComponent);
     }, [cardLength])
 
     useEffect(() => {
         let cardArray:any[] = [];
-        if (cardLength > 1) {
 
+        if (cardLength > 1) {
             for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
-                cardArray.push(
-                    <button
-                        key={cardIndex}
-                        className={currentIndex === cardIndex ? "CreateNavBarItemActive" : "CreateNavBarItem"}
-                        onClick={() => {
-                            setCurrentIndex(cardIndex)
-                            setCurrentCardIndex(cardIndex);
-                        }}
-                    >
-                        {cardIndex}
-                    </button>
-                )
+                cardArray.push(getNewNabBarItem(cardIndex))
             }
+
         }else {
-            cardArray.push(
-                <button
-                    key={1}
-                    className="CreateNavBarItemActive"
-                    onClick={() => {
-                        setCurrentIndex(1)
-                        setCurrentCardIndex(1);
-                    }}
-                >
-                    1
-                </button>
-            )
+            cardArray.push(getNewNabBarItem(1))
         }
 
         setNavBarItemsElements(cardArray);
     }, [])
 
-
+    const getNewNabBarItem = (number:number) => {
+        return (
+            <button
+                key={number}
+                className={ currentIndex === number ? "CreateNavBarItemActive" : "CreateNavBarItem"}
+                onClick={() => {
+                    setCurrentIndex(number);
+                    setCurrentCardIndex(number);
+                }}
+            >
+                {number}
+            </button>
+        )
+    }
 
     return (
         <div className="CreateNavBar">

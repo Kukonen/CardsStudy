@@ -12,7 +12,7 @@ const Create = () => {
     const [title, setTitle] = useState("");
 
     const [currentCard, setCurrentCard] = useState(0);
-    const [currentCardIndex, setCurrentCardIndex] = useState<number>(0)
+    const [currentCardIndex, setCurrentCardIndex] = useState<number>(1)
     const [cardLength, setCardLength] = useState<number>(1);
 
     const createCards = () => {
