@@ -22,7 +22,7 @@ interface I4Block {
 
 const Card = (props: any) => {
 
-    const {currentCard, cardLength, setCardLength} = props;
+    const {currentCard, cardLength} = props;
 
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
@@ -32,11 +32,6 @@ const Card = (props: any) => {
     const [cardType, setCardType] = useState<cardTypeType>("blocks2")
 
     const [answer, setAnswer] = useState<string | I2Block | I4Block>("");
-
-    const saveAndCreateNewCard = () => {
-        saveCard(title, text, cardType, answer);
-        createCard();
-    }
 
     const saveCard = (title:string, text:string, type:cardTypeType, answer:string | I2Block | I4Block) => {
 
@@ -54,10 +49,6 @@ const Card = (props: any) => {
         //         answer
         //     }
         // }
-    }
-
-    const createCard = () => {
-        setCardLength(cardLength + 1);
     }
 
     return (
@@ -155,7 +146,7 @@ const Card = (props: any) => {
             <div className="CardButtonSection">
                 <button
                     className="CardButton"
-                    onClick={() => saveAndCreateNewCard()}
+                    onClick={() => saveCard(title, text, cardType, answer)}
                 >
                     Save Card
                 </button>
