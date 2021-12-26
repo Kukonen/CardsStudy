@@ -1,54 +1,44 @@
 import React, {useState} from 'react';
-import { ICard } from '../CreateProps';
+import CardsModel ,{I2Block, I4Block, CardTypes} from '../../../Models/Cards';
 import './CreateBlocks.scss';
 
 import Block2 from './Types/Block2';
 import Block4 from './Types/Block4';
 import Text from './Types/Text';
 
-interface I2Block {
-    block1: string;
-    block2: string;
-    correct: 1 | 2;
-}
-
-interface I4Block {
-    block1: string;
-    block2: string;
-    block3: string;
-    block4: string;
-    correct: 1 | 2 | 3 | 4;
-}
-
 const Card = (props: any) => {
 
-    const {currentCard, cardLength} = props;
+    const {currentCard, cardLength, card} = props;
 
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
     const [points, setPoints] = useState<number>(0);
 
-    type cardTypeType = "blocks2" | "blocks4" | "text"
-    const [cardType, setCardType] = useState<cardTypeType>("blocks2")
+    const [cardType, setCardType] = useState<CardTypes>("blocks2")
 
-    const [answer, setAnswer] = useState<string | I2Block | I4Block>("");
+    const [answer, setAnswer] = useState<string | I2Block | I4Block | undefined>("");
 
-    const saveCard = (title:string, text:string, type:cardTypeType, answer:string | I2Block | I4Block) => {
+    const createCard = (title:string, text:string, type:CardTypes, answer:string | I2Block | I4Block | undefined, points:number) => {
+        if (title && text && type && answer && points) {
 
-        // // let content = answer;
-        // // // as ICardContentBlock2 | ICardContentBlock4 | ICardContentText
-        // // content.id = "32312312";
-        // const id = "e4232"
-        //
-        // const card:ICard = {
-        //     title,
-        //     text,
-        //     type: cardType,
-        //     content: {
-        //         id,
-        //         answer
-        //     }
-        // }
+            if (type === "text" && answer === "") {
+                return createCardError();
+            }
+
+            for (let key in Object(answer)) {
+                if (Object(answer)[key] === "") {
+                    return createCardError();
+                }
+            }
+
+
+        } else {
+            return createCardError();
+        }
+    }
+
+    const createCardError = () => {
+        console.log("ERROR")
     }
 
     return (
@@ -82,7 +72,10 @@ const Card = (props: any) => {
                     />
                     <label 
                         htmlFor="CardInputRadioBlock2"
-                        onClick={() => setCardType("blocks2")}
+                        onClick={() => {
+                            setAnswer(undefined)
+                            setCardType("blocks2")
+                        }}
                     >
                         2 - block
                     </label>
@@ -97,7 +90,10 @@ const Card = (props: any) => {
                     />
                     <label 
                         htmlFor="CardInputRadioBlock4"
-                        onClick={() => setCardType("blocks4")}
+                        onClick={() => {
+                            setAnswer(undefined);
+                            setCardType("blocks4")
+                        }}
                     >
                         4 - block
                     </label>
@@ -112,7 +108,10 @@ const Card = (props: any) => {
                     />
                     <label 
                         htmlFor="CardInputRadioText"
-                        onClick={() => setCardType("text")}
+                        onClick={() => {
+                            setAnswer(undefined);
+                            setCardType("text")
+                        }}
                     >
                         Text
                     </label>
@@ -146,7 +145,7 @@ const Card = (props: any) => {
             <div className="CardButtonSection">
                 <button
                     className="CardButton"
-                    onClick={() => saveCard(title, text, cardType, answer)}
+                    onClick={() => CardsModel.saveCard(title, text, cardType, answer, points, currentCard)}
                 >
                     Save Card
                 </button>

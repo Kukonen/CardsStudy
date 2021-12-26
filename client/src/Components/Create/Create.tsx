@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Card from './Blocks/Card';
 import './Create.scss';
-import {ICards} from './CreateProps';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
+import CardsModel, {ICard} from '../../Models/Cards';
 
 const Create = () => {
 
@@ -14,6 +14,19 @@ const Create = () => {
     const [currentCard, setCurrentCard] = useState(0);
     const [currentCardIndex, setCurrentCardIndex] = useState<number>(1)
     const [cardLength, setCardLength] = useState<number>(1);
+    const [cards, setCards] = useState<ICard[]>()
+
+    useEffect(() => {
+        const Cards = CardsModel.loadCards();
+
+        if (Cards !== null) {
+
+        }
+
+        setCards(Cards?.cards as ICard[]);
+
+
+    }, [])
 
     const createCard = () => {
         setCardLength(cardLength + 1);
@@ -45,6 +58,7 @@ const Create = () => {
                 <Card
                     currentCard={currentCard}
                     cardLength={cardLength}
+                    card={cards ? cards[currentCard] : null}
                 />
                 <div className="CreateButtonSection">
                     <button
