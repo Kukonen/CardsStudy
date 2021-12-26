@@ -13,13 +13,14 @@
 
 ## Cards field
 
-| Name | Type | Discription |
-| ------ | ------ | ------ | 
-| id | String  | Unique key |
-| title | String | title this card* |
-| text | String | text this card |
-| type | string** | type of card |
-| content | Object | content with type |
+| Name    | Type     | Discription                                         |
+|---------|----------|-----------------------------------------------------| 
+| id      | String   | Unique key                                          |
+| title   | String   | title this card*                                    |
+| text    | String   | text this card                                      |
+| type    | string** | type of card                                        |
+| content | Object   | content with type                                   |
+| points  | Number   | reward for correct answer |
 
 \* if title will be empty, then title will be title of Cards
 ** type can be only 'blocks2' or 'blocks4' or 'text'
@@ -37,7 +38,6 @@
 | block1 | String | text of first block |
 | block2 | String | text of second block |
 | correct | Number* | number of correct block |
-| points | number | reward for correct answer |
 
 \* number 'block1' is 1 and 'block2' is 2
 
@@ -51,7 +51,6 @@
 | block3 | String | text of third block |
 | block4 | String | text of fourth block |
 | correct | Number* | number of correct block |
-| points | number | reward for correct answer |
 
 \* number 'block1' is 1 and 'block2' is 2 and 'block3' is 3 and 'block4' is 4
 
@@ -60,9 +59,7 @@
 | Name | Type | Discription |
 | ------ | ------ | ------ | 
 | id | String  | Unique key |
-| text | String | user's typing text |
 | correct | String | text of correct answer |
-| points | number | reward for correct answer |
 
 ## Comments field
 
