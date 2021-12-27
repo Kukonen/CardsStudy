@@ -11,7 +11,6 @@ const Create = () => {
 
     const [title, setTitle] = useState("");
 
-    const [currentCard, setCurrentCard] = useState(0);
     const [currentCardIndex, setCurrentCardIndex] = useState<number>(1)
     const [cardLength, setCardLength] = useState<number>(1);
     const [cards, setCards] = useState<ICard[]>()
@@ -23,8 +22,9 @@ const Create = () => {
 
         }
 
-        setCards(Cards?.cards as ICard[]);
 
+
+        setCards(Cards?.cards as ICard[]);
 
     }, [])
 
@@ -56,9 +56,9 @@ const Create = () => {
                     createCard={() => createCard()}
                 />
                 <Card
-                    currentCard={currentCard}
+                    currentCardIndex={currentCardIndex}
                     cardLength={cardLength}
-                    card={cards ? cards[currentCard] : null}
+                    card={cards ? cards[currentCardIndex - 1] : null}
                 />
                 <div className="CreateButtonSection">
                     <button

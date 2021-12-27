@@ -14,6 +14,7 @@ export interface ICard {
     text: string;
     type: CardTypes;
     content: ICardContentBlock2 | ICardContentBlock4 | ICardContentText;
+    points: number;
 }
 
 interface ICardContentBlock2 extends I2Block {
@@ -84,6 +85,7 @@ class CardsModel {
     public static saveCard(title:string, text:string, type:CardTypes, answer:string | I2Block | I4Block | undefined, points:number, currentCard:number) {
         const Cards:ICards = JSON.parse(localStorage.getItem('cards') as string);
 
+        currentCard = currentCard - 1;
 
         const contentId = Cards.cards[currentCard] ?
             Cards.cards[currentCard].id :
@@ -100,7 +102,8 @@ class CardsModel {
             title,
             text,
             type,
-            content
+            content,
+            points
         };
 
         localStorage.setItem('cards', JSON.stringify(Cards));

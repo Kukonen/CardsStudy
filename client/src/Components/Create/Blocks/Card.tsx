@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CardsModel ,{I2Block, I4Block, CardTypes} from '../../../Models/Cards';
 import './CreateBlocks.scss';
 
@@ -8,7 +8,7 @@ import Text from './Types/Text';
 
 const Card = (props: any) => {
 
-    const {currentCard, cardLength, card} = props;
+    const {card, currentCardIndex} = props;
 
     const [title, setTitle] = useState<string>("");
     const [text, setText] = useState<string>("");
@@ -18,28 +18,28 @@ const Card = (props: any) => {
 
     const [answer, setAnswer] = useState<string | I2Block | I4Block | undefined>("");
 
-    const createCard = (title:string, text:string, type:CardTypes, answer:string | I2Block | I4Block | undefined, points:number) => {
-        if (title && text && type && answer && points) {
+    useEffect(() => {
 
-            if (type === "text" && answer === "") {
-                return createCardError();
-            }
-
-            for (let key in Object(answer)) {
-                if (Object(answer)[key] === "") {
-                    return createCardError();
-                }
-            }
-
-
-        } else {
-            return createCardError();
+        if (!card) {
+            setTitle("");
+            setText("");
+            setCardType("blocks2");
+            setAnswer({
+                block1: "",
+                block2: "",
+                correct: 1
+            });
+            setPoints(0);
+            return;
         }
-    }
 
-    const createCardError = () => {
-        console.log("ERROR")
-    }
+        setTitle(card.title);
+        setText(card.text);
+        setCardType(card.type);
+        setAnswer(card.content.answer);
+        setPoints(card.points);
+
+    }, [card])
 
     return (
         <div id="Card">
@@ -119,11 +119,20 @@ const Card = (props: any) => {
             </div>
             {
                 cardType === "blocks2" ?
-                    <Block2 changeAnswer={(newAnswer:I2Block) => setAnswer(newAnswer)}/> :
+                    <Block2
+                        changeAnswer={(newAnswer:I2Block) => setAnswer(newAnswer)}
+                        answer={ answer }
+                    /> :
                 cardType === "blocks4" ?
-                    <Block4 changeAnswer={(newAnswer:I4Block) => setAnswer(newAnswer)}/> :
+                    <Block4
+                        changeAnswer={(newAnswer:I4Block) => setAnswer(newAnswer)}
+                        answer={ answer }
+                    /> :
                 cardType === "text" ?
-                    <Text changeAnswer={(newAnswer:string) => setAnswer(newAnswer)}/> :
+                    <Text
+                        changeAnswer={(newAnswer:string) => setAnswer(newAnswer)}
+                        answer={ answer }
+                    /> :
                     null
             }
             <div id="CreatePoints">
@@ -145,7 +154,7 @@ const Card = (props: any) => {
             <div className="CardButtonSection">
                 <button
                     className="CardButton"
-                    onClick={() => CardsModel.saveCard(title, text, cardType, answer, points, currentCard)}
+                    onClick={() => CardsModel.saveCard(title, text, cardType, answer, points, currentCardIndex)}
                 >
                     Save Card
                 </button>

@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
 
 const Text = (props:any) => {
 
-    const {changeAnswer} = props;
+    const {changeAnswer, answer} = props;
 
     const [text, setText] = useState<string>("");
+
+    useEffect(() => {
+        setText(answer)
+    }, [])
 
     return (
         <div>

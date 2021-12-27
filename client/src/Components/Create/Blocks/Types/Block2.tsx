@@ -1,16 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
 import SelectImg from './select.svg';
 
 const Block2 = (props:any) => {
 
-    const {changeAnswer} = props;
+    const {changeAnswer, answer} = props;
 
     const [block1, setBlock1] = useState<string>("");
     const [block2, setBlock2] = useState<string>("");
 
     type correctType = 1 | 2;
     const [correct, setCorrect] = useState<correctType>(1);
+
+    useEffect(() => {
+        if (!answer) {
+            return;
+        }
+
+        setBlock1(answer.block1);
+        setBlock2(answer.block2);
+        setCorrect(answer.correct);
+
+    }, [])
 
     return (
         <div>

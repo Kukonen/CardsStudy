@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
 import SelectImg from './select.svg';
 
 const Block4 = (props:any) => {
 
-    const {changeAnswer} = props;
+    const {changeAnswer, answer} = props;
 
     const [block1, setBlock1] = useState<string>("");
     const [block2, setBlock2] = useState<string>("");
@@ -13,6 +13,19 @@ const Block4 = (props:any) => {
 
     type correctType = 1 | 2 | 3 | 4;
     const [correct, setCorrect] = useState<correctType>(1);
+
+    useEffect(() => {
+        if (!answer) {
+            return;
+        }
+
+        setBlock1(answer.block1);
+        setBlock2(answer.block2);
+        setBlock3(answer.block3);
+        setBlock4(answer.block4);
+        setCorrect(answer.correct);
+
+    }, [])
 
     return (
         <div>
