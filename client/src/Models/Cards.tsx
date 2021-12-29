@@ -149,6 +149,14 @@ class CardsModel {
 
         return randomString;
     }
+
+    public static changeTitle(title:string) {
+        const Cards:ICards = JSON.parse(localStorage.getItem('cards') as string);
+
+        Cards.title = title;
+
+        localStorage.setItem('cards', JSON.stringify(Cards));
+    }
 }
 
 export default CardsModel;

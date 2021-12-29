@@ -44,6 +44,7 @@ const Create = () => {
                            value={title}
                            onChange={event => {
                                setTitle(event.target.value);
+                               CardsModel.changeTitle(event.target.value);
                            }}
                            className="CreateInput"
                            placeholder="Title of Cards"
