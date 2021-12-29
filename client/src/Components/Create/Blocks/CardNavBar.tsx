@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import card from "./Card";
 
 const CardNavBar = (props:any) => {
 
@@ -19,7 +20,16 @@ const CardNavBar = (props:any) => {
 
         cardArray.pop();
 
-        cardArray.push(getNewNabBarItem(cardLength))
+        // if element refresh after first load items
+        // else add only 1 new card
+        if (cardLength > cardArray.length + 1) {
+            cardArray = [];
+            for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
+                cardArray.push(getNewNabBarItem(cardIndex))
+            }
+        } else {
+            cardArray.push(getNewNabBarItem(cardLength))
+        }
 
         cardArray.push(getNewNabBarItem('+'))
 
@@ -30,7 +40,7 @@ const CardNavBar = (props:any) => {
 
     useEffect(() => {
         let cardArray:any[] = [];
-
+        console.log(cardLength)
         if (cardLength > 1) {
             for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
                 cardArray.push(getNewNabBarItem(cardIndex))
@@ -39,7 +49,7 @@ const CardNavBar = (props:any) => {
         }else {
             cardArray.push(getNewNabBarItem(1))
         }
-
+        cardArray.push(getNewNabBarItem(1));
         cardArray.push(getNewNabBarItem('+'))
 
         setNavBarItemsElements(cardArray);

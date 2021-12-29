@@ -22,7 +22,9 @@ const Create = () => {
 
         }
 
+        const CardsLength = Object.keys(Cards?.cards as Object).length
 
+        setCardLength( CardsLength ? CardsLength : 1);
 
         setCards(Cards?.cards as ICard[]);
 
