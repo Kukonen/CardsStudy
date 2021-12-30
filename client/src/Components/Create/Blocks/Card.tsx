@@ -37,7 +37,7 @@ const Card = (props: any) => {
         setText(card.text);
         setCardType(card.type);
         setAnswer(card.content.answer);
-        setPoints(card.points);
+        setPoints(card.points ? card.points : 0);
 
     }, [card])
 

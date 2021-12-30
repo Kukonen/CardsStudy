@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import card from "./Card";
 
 const CardNavBar = (props:any) => {
 
