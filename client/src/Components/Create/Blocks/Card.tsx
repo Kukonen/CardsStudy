@@ -68,7 +68,7 @@ const Card = (props: any) => {
                         id="CardInputRadioBlock2"
                         name="type"
                         className="CardInputRadio"
-                        defaultChecked={cardType === "blocks2"}
+                        checked={cardType === "blocks2"}
                     />
                     <label 
                         htmlFor="CardInputRadioBlock2"
@@ -86,7 +86,7 @@ const Card = (props: any) => {
                         id="CardInputRadioBlock4"
                         name="type"
                         className="CardInputRadio"
-                        defaultChecked={cardType === "blocks4"}
+                        checked={cardType === "blocks4"}
                     />
                     <label 
                         htmlFor="CardInputRadioBlock4"
@@ -104,7 +104,7 @@ const Card = (props: any) => {
                         id="CardInputRadioText"
                         name="type"
                         className="CardInputRadio"
-                        defaultChecked={cardType === "text"}
+                        checked={cardType === "text"}
                     />
                     <label 
                         htmlFor="CardInputRadioText"
