@@ -4,6 +4,7 @@ import './Create.scss';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
 import CardsModel, {ICard} from '../../Models/Cards';
+import card from "./Blocks/Card";
 
 const Create = () => {
 
@@ -24,15 +25,33 @@ const Create = () => {
 
         const CardsLength = Object.keys(Cards?.cards as Object).length
 
-        setCardLength( CardsLength ? CardsLength : 1);
+        setCardLength(CardsLength ? CardsLength : 1);
 
         setCards(Cards?.cards as ICard[]);
 
     }, [])
 
     const createCard = () => {
+
+        // check cards for empty
+        // if at least one is empty
+        // when no add new card!
+
+        const cardsLength = Object.keys(cards as Object).length;
+
+        if (!cards) {
+            return;
+        }
+
+        for (let cardIndex = 0; cardIndex < cardsLength; ++cardIndex) {
+            if (CardsModel.cardIsEmpty(cards[cardIndex])) {
+                return;
+            }
+        }
+
         setCardLength(cardLength + 1);
     }
+
 
     const createCards = () => {
 
@@ -54,7 +73,7 @@ const Create = () => {
                 </div>
                 <CardNavBar
                     currentCardIndex={currentCardIndex}
-                    setCurrentCardIndex={(cardIndex:number) => setCurrentCardIndex(cardIndex)}
+                    setCurrentCardIndex={(cardIndex: number) => setCurrentCardIndex(cardIndex)}
                     cardLength={cardLength}
                     createCard={() => createCard()}
                 />
@@ -73,7 +92,7 @@ const Create = () => {
                 </div>
 
                 {
-                    error ? 
+                    error ?
                         <div>
                             That's was wrong!
                         </div> :

@@ -2,10 +2,10 @@ import React from 'react';
 import './Content.scss';
 import { Routes, Route } from "react-router-dom";
 
-import Login from "../Auth/Login";
-import Register from "../Auth/Register";
-import Profile from '../Profile/Profile';
-import Create from '../Create/Create';
+import Login from "../../Pages/Auth/Login";
+import Register from "../../Pages/Auth/Register";
+import Profile from '../../Pages/Profile/Profile';
+import Create from '../../Pages/Create/Create';
 
 const Content = () => {
     return (

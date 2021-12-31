@@ -1,9 +1,5 @@
 @import "./light/index.scss";
 
-@mixin Link() {
-
-}
-
 @mixin Input($font-size) {
     outline: none;
     font-size: $font-size;
