@@ -1,0 +1,17 @@
+@import "../../Themes//index.scss";
+
+.Button {
+  padding: 5px;
+  border: 1px solid $border;
+  cursor: pointer;
+  background-color: $background;
+  &:hover {
+    border: 1px solid $primary;
+    background-color: $primary-light;
+  }
+}
+
+.ButtonLink {
+  text-decoration: none;
+  color: $font-color;
+}
