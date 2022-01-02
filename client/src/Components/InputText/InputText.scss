@@ -1,0 +1,10 @@
+@import "../../Themes//index.scss";
+
+.InputText {
+  outline: none;
+  padding: 5px;
+  border: 1px solid $primary;
+  &:focus {
+    background: $primary-light;
+  }
+}

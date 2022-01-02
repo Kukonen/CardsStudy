@@ -11,11 +11,11 @@ const Button = ({children, link, fontSize}:ButtonProps) => {
             <Link to={link} className={
                 classNames(
                     "Button",
-                    "ButtonLink",
-                    {
-                        fontSize: fontSize
-                    }
+                    "ButtonLink"
                 )}
+                style={{
+                    fontSize: fontSize
+                }}
             >
                 {children}
             </Link>
@@ -23,13 +23,11 @@ const Button = ({children, link, fontSize}:ButtonProps) => {
     }
 
     return (
-        <button className={
-            classNames(
-                "Button",
-                {
-                    fontSize:fontSize
-                }
-            )}
+        <button
+            className={"Button"}
+            style={{
+                fontSize: fontSize
+            }}
         >
             {children}
         </button>
