@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import './Header.scss';
-import { Link } from "react-router-dom";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 import DarkIcon from './dark.svg';
 import LightIcon from './light.svg';
+
+import Button from "../../Components/Button/Button";
+import InputText from "../../Components/InputText/InputText";
 
 const Header = (props: any) => {
 
@@ -37,6 +40,7 @@ const Header = (props: any) => {
                     </div>
                 </div>
                 <div className="HeaderLinks">
+
                     <Link to="/popular" className="HeaderLink">
                         Popular
                     </Link>
@@ -46,31 +50,31 @@ const Header = (props: any) => {
                 </div>
             </div>
             <div className="BottomHeader">
-                <input type="text" className="HeaderFind" placeholder="Find Cards"/>
+                <InputText fontSize={22} placeholder={"Find Cards"} />
                 <div className="HeaderProfile">
                 {
                     auth === 'auth' ? 
                         <div className="HeaderProfileSection">
-                                <Link to='/create' className="HeaderProfileBlock">
+                                <Button fontSize={18} link={'/create'}>
                                     Create Card
-                                </Link>
-                                <Link to='/profile' className="HeaderProfileBlock">
+                                </Button>
+                                <Button fontSize={18} link={'/profile'}>
                                     Profile
-                                </Link>
-                                <div className="HeaderProfileBlock"
-                                    onClick={ () => logOut() }
+                                </Button>
+                                <Button fontSize={18}
+                                    onClick={ () => logOut()}
                                 >
                                     Log out
-                                </div>
+                                </Button>
                         </div> :
                             auth === 'notauth' ?
                                 <div className="HeaderProfileSection">
-                                    <Link to='/register' className="HeaderProfileBlock">
+                                    <Button fontSize={18} link={'/register'}>
                                         Sign up
-                                    </Link>
-                                    <Link to='/login' className="HeaderProfileBlock">
+                                    </Button>
+                                    <Button fontSize={18} link={'/login'}>
                                         Sign in
-                                    </Link>
+                                    </Button>
                                 </div> :
                                 null
                 }

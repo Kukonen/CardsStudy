@@ -78,7 +78,6 @@
 
 .HeaderFind {
     margin: auto auto auto 50px;
-    @include Input(22px);
     @include headerSectionsChildren();
 }
 
@@ -90,16 +89,4 @@
 .HeaderProfileSection {
     display: flex;
     gap: 10px;
-}
-
-.HeaderProfileBlock {
-    font-size: 18px;
-    padding: 5px;
-    border: 1px solid $border;
-    cursor: pointer;
-    @include headerLink();
-    &:hover {
-        border: 1px solid $primary;
-        background-color: $primary-light;
-    }
 }
