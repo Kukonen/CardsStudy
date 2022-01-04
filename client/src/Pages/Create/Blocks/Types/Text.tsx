@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
+import InputText from "../../../../Components/InputText/InputText";
 
 const Text = (props:any) => {
 
@@ -15,14 +16,14 @@ const Text = (props:any) => {
         <div>
             <div className="CreateInputBlocksSection">
                 <div className="CreateInputBlocksBlock">
-                    <input
-                        type="text"
-                        className="CreateInput"
+                    <InputText
                         value={text}
                         onChange={event => {
                             setText(event.target.value);
                             changeAnswer(event.target.value);
                         }}
+                        fontSize={18}
+                        textAlgin={'center'}
                     />
                 </div>
             </div>

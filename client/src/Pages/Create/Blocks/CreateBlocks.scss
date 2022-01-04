@@ -97,11 +97,6 @@
   margin: auto;
 }
 
-.CreateInputBlocks {
-  @include Input(18px);
-  text-align: center;
-}
-
 #CreatePoints {
   margin-top: 25px;
   display: flex;

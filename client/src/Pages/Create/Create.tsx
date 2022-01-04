@@ -4,7 +4,9 @@ import './Create.scss';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
 import CardsModel, {ICard} from '../../Models/Cards';
-import card from "./Blocks/Card";
+
+import InputText from "../../Components/InputText/InputText";
+import Button from "../../Components/Button/Button";
 
 const Create = () => {
 
@@ -61,14 +63,15 @@ const Create = () => {
         <div id="Create">
             <div id="CreateSection">
                 <div id="CreateTitle">
-                    <input type="text"
+                    <InputText type="text"
                            value={title}
                            onChange={event => {
                                setTitle(event.target.value);
                                CardsModel.changeTitle(event.target.value);
                            }}
-                           className="CreateInput"
                            placeholder="Title of Cards"
+                           fontSize={18}
+                           textAlgin={'center'}
                     />
                 </div>
                 <CardNavBar

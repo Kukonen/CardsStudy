@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
 import SelectImg from './select.svg';
+import InputText from "../../../../Components/InputText/InputText";
 
 const Block2 = (props:any) => {
 
@@ -48,7 +49,7 @@ const Block2 = (props:any) => {
                                 null
                         }
                     </div>
-                    <input
+                    <InputText
                         type="text"
                         value={block1}
                         onChange={event => {
@@ -61,6 +62,8 @@ const Block2 = (props:any) => {
                         }}
                         className="CreateInputBlocks"
                         placeholder="Block - 1"
+                        fontSize={18}
+                        textAlgin={'center'}
                     />
                 </div>
                 <div className="CreateInputBlocksBlock">
