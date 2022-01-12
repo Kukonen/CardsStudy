@@ -57,7 +57,9 @@ const Card = (props: any) => {
                     rows={5}
                     className="CreateInputTextarea"
                     defaultValue={text}
-                    onChange={event => setText(event.target.value)}
+                    onChange={event => {
+                        setText(event.target.value)
+                    }}
                     placeholder="Text of This Card"
                 />
             </div>

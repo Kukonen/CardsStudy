@@ -3,9 +3,7 @@ import Card from './Blocks/Card';
 import './Create.scss';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
-import CardsModel, {ICard} from '../../Models/Cards';
-
-import InputText from "../../Components/InputText/InputText";
+import CardsModel, {ICard, ICards} from '../../Models/Cards';
 
 const Create = () => {
 
@@ -29,6 +27,8 @@ const Create = () => {
         setCardLength(CardsLength ? CardsLength : 1);
 
         setCards(Cards?.cards as ICard[]);
+        
+        setTitle(Cards?.title as string);
 
     }, [])
 
@@ -38,16 +38,20 @@ const Create = () => {
         // if at least one is empty
         // when no add new card!
 
+        // get actual cards by localstorage
+        const Cards:ICards = JSON.parse(localStorage.getItem('cards') as string);
 
-        if (!cards) {
+        if (!Cards) {
             return;
         }
 
-
-        const cardsLength = Object.keys(cards as Object).length;
+        const cardsLength = Object.keys(Cards.cards as Object).length;
 
         for (let cardIndex = 0; cardIndex < cardsLength; ++cardIndex) {
-            if (CardsModel.cardIsEmpty(cards[cardIndex])) {
+            if (Cards.cards === undefined) {
+                return;
+            }
+            if (CardsModel.cardIsEmpty(Cards.cards[cardIndex])) {
                 return;
             }
         }

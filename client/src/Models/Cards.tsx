@@ -13,7 +13,10 @@ export interface ICard {
     title: string;
     text: string;
     type: CardTypes;
-    content: ICardContentBlock2 | ICardContentBlock4 | ICardContentText;
+    content: {
+        id: string;
+        answer: ICardContentBlock2 | ICardContentBlock4 | ICardContentText;
+    };
     points: number;
 }
 
@@ -163,16 +166,32 @@ class CardsModel {
             return true;
         }
 
-        if (card.title === "" || card.text === "") {
+        if (card.title === "" || card.text === "" || !card.content.id) {
             return true;
         }
 
-        const answers = Object.keys(card.content);
-        answers.forEach(answerItem => {
-            if (answerItem === "") {
-                return true;
+        const answers = Object.keys(card.content.answer);
+
+        for (const answersKey in card.content.answer) {
+            // @ts-ignore
+            const answer = card.content.answer[answersKey];
+
+            if (typeof answer === "string") {
+                if (answer === "") {
+                    return true;
+                }
             }
-        })
+
+            if (typeof answer === "number") {
+                if (!(answer <= answers.length && answer > 0)) {
+                    // if answers 5 by blocks4 answer must be 1-4
+                    // if answers 3 by blocks2 answer must be 1-2
+                    // else error!
+
+                    return true;
+                }
+            }
+        }
 
         return false;
     }
