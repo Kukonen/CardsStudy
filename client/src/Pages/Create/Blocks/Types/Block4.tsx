@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../CreateBlocks.scss';
 import SelectImg from './select.svg';
+import InputText from "../../../../Components/InputText/InputText";
 
 const Block4 = (props:any) => {
 

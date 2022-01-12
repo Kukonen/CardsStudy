@@ -32,7 +32,6 @@
 
 .CreateInputTextarea {
     @include Input(22px);
-    resize: none;
     width: 500px;
 }
 

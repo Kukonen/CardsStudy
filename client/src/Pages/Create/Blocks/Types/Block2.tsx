@@ -49,7 +49,7 @@ const Block2 = (props:any) => {
                                 null
                         }
                     </div>
-                    <InputText
+                    <input
                         type="text"
                         value={block1}
                         onChange={event => {
@@ -62,8 +62,6 @@ const Block2 = (props:any) => {
                         }}
                         className="CreateInputBlocks"
                         placeholder="Block - 1"
-                        fontSize={18}
-                        textAlgin={'center'}
                     />
                 </div>
                 <div className="CreateInputBlocksBlock">

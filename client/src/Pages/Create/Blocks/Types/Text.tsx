@@ -16,14 +16,14 @@ const Text = (props:any) => {
         <div>
             <div className="CreateInputBlocksSection">
                 <div className="CreateInputBlocksBlock">
-                    <InputText
+                    <textarea
                         value={text}
                         onChange={event => {
                             setText(event.target.value);
                             changeAnswer(event.target.value);
                         }}
-                        fontSize={18}
-                        textAlgin={'center'}
+                        placeholder="Answer of this card"
+                        className="CreateInputTextarea"
                     />
                 </div>
             </div>

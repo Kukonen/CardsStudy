@@ -1,7 +1,6 @@
 import React from "react";
 import './InputText.scss';
 import {InputTextProps} from "./InputText.props";
-import classNames from "classnames";
 
 const InputText = ({fontSize, placeholder, textAlgin} : InputTextProps) => {
 

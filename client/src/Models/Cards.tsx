@@ -157,6 +157,25 @@ class CardsModel {
 
         localStorage.setItem('cards', JSON.stringify(Cards));
     }
+
+    public static cardIsEmpty (card:ICard):boolean {
+        if (!card) {
+            return true;
+        }
+
+        if (card.title === "" || card.text === "") {
+            return true;
+        }
+
+        const answers = Object.keys(card.content);
+        answers.forEach(answerItem => {
+            if (answerItem === "") {
+                return true;
+            }
+        })
+
+        return false;
+    }
 }
 
 export default CardsModel;

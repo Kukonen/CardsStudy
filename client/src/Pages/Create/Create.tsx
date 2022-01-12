@@ -6,7 +6,6 @@ import CardNavBar from "./Blocks/CardNavBar";
 import CardsModel, {ICard} from '../../Models/Cards';
 
 import InputText from "../../Components/InputText/InputText";
-import Button from "../../Components/Button/Button";
 
 const Create = () => {
 
@@ -39,11 +38,13 @@ const Create = () => {
         // if at least one is empty
         // when no add new card!
 
-        const cardsLength = Object.keys(cards as Object).length;
 
         if (!cards) {
             return;
         }
+
+
+        const cardsLength = Object.keys(cards as Object).length;
 
         for (let cardIndex = 0; cardIndex < cardsLength; ++cardIndex) {
             if (CardsModel.cardIsEmpty(cards[cardIndex])) {
@@ -63,15 +64,14 @@ const Create = () => {
         <div id="Create">
             <div id="CreateSection">
                 <div id="CreateTitle">
-                    <InputText type="text"
+                    <input type="text"
                            value={title}
                            onChange={event => {
                                setTitle(event.target.value);
                                CardsModel.changeTitle(event.target.value);
                            }}
                            placeholder="Title of Cards"
-                           fontSize={18}
-                           textAlgin={'center'}
+                           style={{fontSize:22}}
                     />
                 </div>
                 <CardNavBar

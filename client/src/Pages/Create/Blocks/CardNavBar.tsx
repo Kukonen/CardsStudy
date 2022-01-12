@@ -39,16 +39,14 @@ const CardNavBar = (props:any) => {
 
     useEffect(() => {
         let cardArray:any[] = [];
-        console.log(cardLength)
         if (cardLength > 1) {
             for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
                 cardArray.push(getNewNabBarItem(cardIndex))
             }
 
         }else {
-            cardArray.push(getNewNabBarItem(1))
+            cardArray.push(getNewNabBarItem(1));
         }
-        cardArray.push(getNewNabBarItem(1));
         cardArray.push(getNewNabBarItem('+'))
 
         setNavBarItemsElements(cardArray);

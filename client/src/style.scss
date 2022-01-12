@@ -3,9 +3,29 @@
 body, #root {
     font-family: Roboto;
     background-color: $document-background;
-    min-height: 100vh
+    min-height: 100vh;
 }
 
 body {
     margin: 0;
+}
+
+input {
+    outline: none;
+    padding: 5px;
+    border: 1px solid $primary;
+    font-size: 18px;
+    &:focus {
+        background: $primary-light;
+    }
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    padding: 5px;
+    border: 1px solid $primary;
+    &:focus {
+        background: $primary-light;
+    }
 }
