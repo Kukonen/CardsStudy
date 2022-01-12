@@ -30,6 +30,12 @@
 
 ## Card's Content field
 
+## Content
+| Name | Type                                    | Discription                                |
+|------|-----------------------------------------|--------------------------------------------| 
+| id   | String                                  | Unique key                                 |
+| answer | Object <br/> (block2 or block4 or text) | objects contain corrct answers, disclosed further |
+
 ### blocks2
 
 | Name | Type | Discription |
