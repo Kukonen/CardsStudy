@@ -15,21 +15,12 @@ export interface ICard {
     type: CardTypes;
     content: {
         id: string;
-        answer: ICardContentBlock2 | ICardContentBlock4 | ICardContentText;
+        answer: I2Block | I4Block | ICardContentText;
     };
     points: number;
 }
 
-interface ICardContentBlock2 extends I2Block {
-    id: string;
-}
-
-interface ICardContentBlock4 extends I4Block {
-    id: string;
-}
-
 interface ICardContentText {
-    id: string;
     correct: string;
 }
 

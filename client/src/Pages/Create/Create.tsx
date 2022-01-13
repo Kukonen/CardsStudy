@@ -3,7 +3,7 @@ import Card from './Blocks/Card';
 import './Create.scss';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
-import CardsModel, {ICard, ICards} from '../../Models/Cards';
+import CardsModel, {CardTypes, I2Block, ICard, ICards} from '../../Models/Cards';
 
 const Create = () => {
 
@@ -47,6 +47,8 @@ const Create = () => {
 
         const cardsLength = Object.keys(Cards.cards as Object).length;
 
+        Cards.cards = Object.values(Cards.cards)
+
         for (let cardIndex = 0; cardIndex < cardsLength; ++cardIndex) {
             if (Cards.cards === undefined) {
                 return;
@@ -55,6 +57,29 @@ const Create = () => {
                 return;
             }
         }
+
+        const emptyAnswer:I2Block = {
+            block1: "",
+            block2: "",
+            correct: 1
+        }
+
+
+        Cards.cards.push({
+            id: CardsModel.generateRandomStringByLength(5),
+            title: "",
+            text: "",
+            type: "blocks2",
+            content: {
+                id: CardsModel.generateRandomStringByLength(5),
+                answer: emptyAnswer
+            },
+            points: 0
+        })
+
+        localStorage.setItem('cards', JSON.stringify(Cards))
+
+        setCards(Cards.cards);
 
         setCardLength(cardLength + 1);
     }
