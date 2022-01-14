@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import NavBarItem from "./NavBarItem";
 
 const CardNavBar = (props:any) => {
 
@@ -24,13 +25,34 @@ const CardNavBar = (props:any) => {
         if (cardLength > cardArray.length + 1) {
             cardArray = [];
             for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
-                cardArray.push(getNewNabBarItem(cardIndex))
+                cardArray.push(<NavBarItem
+                    number={cardIndex}
+                    currentCardIndex={currentCardIndex}
+                    createCard={createCard}
+                    setCurrentIndex={setCurrentIndex}
+                    setCurrentCardIndex={setCurrentCardIndex}
+                    currentIndex={currentIndex}
+                />)
             }
         } else {
-            cardArray.push(getNewNabBarItem(cardLength))
+            cardArray.push(<NavBarItem
+                number={cardLength}
+                currentCardIndex={currentCardIndex}
+                createCard={createCard}
+                setCurrentIndex={setCurrentIndex}
+                setCurrentCardIndex={setCurrentCardIndex}
+                currentIndex={currentIndex}
+            />)
         }
 
-        cardArray.push(getNewNabBarItem('+'))
+        cardArray.push(<NavBarItem
+            number={'+'}
+            currentCardIndex={currentCardIndex}
+            createCard={createCard}
+            setCurrentIndex={setCurrentIndex}
+            setCurrentCardIndex={setCurrentCardIndex}
+            currentIndex={currentIndex}
+        />)
 
         setNavBarItemsElements(cardArray);
 
@@ -41,50 +63,37 @@ const CardNavBar = (props:any) => {
         let cardArray:any[] = [];
         if (cardLength > 1) {
             for (let cardIndex = 1; cardIndex <= cardLength; cardIndex++) {
-                cardArray.push(getNewNabBarItem(cardIndex))
+                cardArray.push(<NavBarItem
+                    number={cardIndex}
+                    currentCardIndex={currentCardIndex}
+                    createCard={createCard}
+                    setCurrentIndex={setCurrentIndex}
+                    setCurrentCardIndex={setCurrentCardIndex}
+                    currentIndex={currentIndex}
+                />)
             }
 
         }else {
-            cardArray.push(getNewNabBarItem(1));
+            cardArray.push(<NavBarItem
+                number={1}
+                currentCardIndex={currentCardIndex}
+                createCard={createCard}
+                setCurrentIndex={setCurrentIndex}
+                setCurrentCardIndex={setCurrentCardIndex}
+                currentIndex={currentIndex}
+            />);
         }
-        cardArray.push(getNewNabBarItem('+'))
+        cardArray.push(<NavBarItem
+            number={'+'}
+            currentCardIndex={currentCardIndex}
+            createCard={createCard}
+            setCurrentIndex={setCurrentIndex}
+            setCurrentCardIndex={setCurrentCardIndex}
+            currentIndex={currentIndex}
+        />)
 
         setNavBarItemsElements(cardArray);
     }, [])
-
-    const getNewNabBarItem = (number:number | '+') => {
-
-        if (number === '+') {
-            return (
-                <button
-                    key={number}
-                    className={ getNavBarClassName(0) }
-                    onClick={() => {
-                        createCard();
-                    }}
-                >
-                    {number}
-                </button>
-            )
-        }
-
-        return (
-            <button
-                key={number}
-                className={ getNavBarClassName(number) }
-                onClick={() => {
-                    setCurrentIndex(number);
-                    setCurrentCardIndex(number);
-                }}
-            >
-                {number}
-            </button>
-        )
-    }
-
-    const getNavBarClassName = (number:number):string => {
-        return currentIndex === number ? "CreateNavBarItemActive" : "CreateNavBarItem";
-    }
 
     return (
         <div className="CreateNavBar">
