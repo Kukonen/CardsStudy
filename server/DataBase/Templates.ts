@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 import {Schema, Model} from 'mongoose';
 import {ICards} from "../Interfaces/Cards";
 
-const cardsSchema = new Schema<ICards, Model<ICards>, ICards>({
+const templateSchema = new Schema<ICards, Model<ICards>, ICards>({
     id: {
         type: String,
         required: true,
@@ -61,4 +61,4 @@ const cardsSchema = new Schema<ICards, Model<ICards>, ICards>({
     }
 });
 
-module.exports = mongoose.model('Cards', cardsSchema);
+module.exports = mongoose.model('Templates', templateSchema);

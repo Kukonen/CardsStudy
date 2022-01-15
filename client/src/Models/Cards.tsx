@@ -129,7 +129,7 @@ class CardsModel {
             points
         }
 
-        axios.post("/cards/addcard", sendData);
+        axios.post("/cards/savecard", sendData);
     }
 
     public static checkCanCreateCard(title:string, text:string, type:CardTypes, answer:string | I2Block | I4Block | undefined, points:number):boolean {

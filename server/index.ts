@@ -14,9 +14,11 @@ app.use(express.static('static'));
 // routes
 import authRoute from './Routers/auth.router';
 import profileRoute from './Routers/profile.router';
+import cardsRoute from "./Routers/cards.router";
 
 app.use('/auth', authRoute);
 app.use('/profile', profileRoute);
+app.use('/cards', cardsRoute);
 
 const PORT = process.env.PORT || 3030;
 

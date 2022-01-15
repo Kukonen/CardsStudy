@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+//@ts-ignore
 const User = require('../DataBase/User');
 
 interface ITwoTokens {
