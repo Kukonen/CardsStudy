@@ -3,7 +3,7 @@ import Card from './Blocks/Card';
 import './Create.scss';
 import './Blocks/CreateBlocks.scss';
 import CardNavBar from "./Blocks/CardNavBar";
-import CardsModel, {CardTypes, I2Block, ICard, ICards} from '../../Models/Cards';
+import CardsModel, {I2Block, ICard, ICards} from '../../Models/Cards';
 
 const Create = () => {
 

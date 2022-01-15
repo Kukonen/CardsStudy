@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export interface ICards {
     id: string;
     authtor: string;
@@ -55,6 +57,18 @@ export interface ICardsResults {
 
 export type CardTypes = "blocks2" | "blocks4" | "text";
 
+interface SendCard {
+    id: string;
+    number: number;
+    title: string;
+    text: string;
+    type: CardTypes;
+    content: {
+        id: string;
+        answer: string | I2Block | I4Block | undefined;
+    }
+    points: number;
+}
 
 class CardsModel {
     public static loadCards():null | ICards {
@@ -101,6 +115,21 @@ class CardsModel {
         };
 
         localStorage.setItem('cards', JSON.stringify(Cards));
+
+        const sendData: SendCard = {
+            id: cardId,
+            number: currentCard,
+            title,
+            text,
+            type,
+            content: {
+                id: contentId,
+                answer
+            },
+            points
+        }
+
+        axios.post("/cards/addcard", sendData);
     }
 
     public static checkCanCreateCard(title:string, text:string, type:CardTypes, answer:string | I2Block | I4Block | undefined, points:number):boolean {
